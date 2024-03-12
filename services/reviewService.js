@@ -4,7 +4,7 @@ const Review = require('../models/reviewModel');
 
 exports.createFilterObj = (req, res, next) => {
   let filterObject = {};
-  if (req.params.productId) filterObject = { product: req.params.productId };
+  if (req.params.driverId) filterObject = { product: req.params.driverId };
   req.filterObj = filterObject;
   next();
 };
@@ -15,8 +15,8 @@ exports.getReviews = factory.getAll(Review);
 
 exports.getReview = factory.getOne(Review);
 
-exports.setProductIdAndUserIdToBody = (req, res, next) => {
-  if (!req.body.product) req.body.product = req.params.productId;
+exports.setdriverIdAndUserIdToBody = (req, res, next) => {
+  if (!req.body.driver) req.body.driver = req.params.driverId;
   if (!req.body.user) req.body.user = req.user._id;
   next();
 };
